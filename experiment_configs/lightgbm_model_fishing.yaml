@@ -1,0 +1,123 @@
+run_description: Test run on fishing dataset 
+# This is where we define the feature dataset
+sql_parameters:
+  features: 
+    - speed
+    - course
+    - latitude
+    - longitude
+    - speed_t-1
+    - course_t-1
+    - latitude_t-1
+    - longitude_t-1
+    - speed_t-2
+    - course_t-2
+    - latitude_t-2
+    - longitude_t-2
+    - speed_t-3
+    - course_t-3
+    - latitude_t-3
+    - longitude_t-3
+    - speed_t-4
+    - course_t-4
+    - latitude_t-4
+    - longitude_t-4
+    - speed_t-5
+    - course_t-5
+    - latitude_t-5
+    - longitude_t-5
+    - speed_t-6
+    - course_t-6
+    - latitude_t-6
+    - longitude_t-6
+    - speed_t-7
+    - course_t-7
+    - latitude_t-7
+    - longitude_t-7
+    - speed_t-8
+    - course_t-8
+    - latitude_t-8
+    - longitude_t-8
+    - speed_t-9
+    - course_t-9
+    - latitude_t-9
+    - longitude_t-9
+    - speed_t-10
+    - course_t-10
+    - latitude_t-10
+    - longitude_t-10
+    - distance
+    - hour
+    - season
+    - time_delta
+    - speed_diff
+    - acceleration
+    - jerk
+    - speed_mean
+    - speed_std
+    - speed_min
+    - speed_max
+    - course_mean
+    - course_std
+    - course_min
+    - course_max
+    - acceleration_mean
+    - acceleration_std
+    - acceleration_min
+    - acceleration_max
+    - circular_variance
+    - weekday_1
+    - weekday_2
+    - weekday_3
+    - weekday_4
+    - weekday_5
+    - weekday_6
+    - speed_cluster
+# The grid table that we do a left join on defining H3_BLOCKS
+  first_table: TRAWLERS_FEAT_ENG
+# Label dataset used in training/testing model
+  labels: 
+    - fishing
+# Label Column
+  label_column: LABEL
+# Meta columns used for plotting 
+  meta_columns:
+    - mmsi
+    - ts_pos_utc
+# Test dataset held out for of train/validation for evaluating performance
+  test_data: 
+    - TRAWLERS_FEAT_ENG
+# Custom parameters allowing for dynamic feature/label designs
+  params:
+    positive_well_depth_threshold: 10
+    negative_well_depth_threshold: 150
+# Model specs - model type, base parameters for optimization
+model: 
+  name: LGBMBinaryClassifier
+  lightgbm:
+    model_params:
+      verbose : -1
+      boosting_type: 'gbdt'
+    optim_params:
+      verbose: 0
+      n_iter : 30
+      scoring: "roc_auc"
+      search_spaces:
+        max_depth : [2, 8, 'uniform']
+        num_leaves : [2, 512, 'uniform']
+        min_child_samples : [15, 100, 'uniform']
+        learning_rate : [0.001, 0.2,'log-uniform']
+        n_estimators : [100, 120, 'uniform']
+        colsample_bytree : [0.2, 0.6, 'uniform']
+        subsample :  [0.2, 0.6, 'uniform']
+        subsample_freq :  [1, 7, 'uniform']
+        reg_alpha :  [0.00000001, 1.0, 'log-uniform']
+        reg_lambda :  [0.00000001, 1.0, 'log-uniform']
+# Cross validation specs - type and specs for # of splits, buffering, cluster distances
+  cross_validator: BlockCV
+  cross_validator_parameters: 
+   nx : 4
+   ny : 2
+   n_folds: 5
+   buffer : 10
+   clustering_distance: 50
