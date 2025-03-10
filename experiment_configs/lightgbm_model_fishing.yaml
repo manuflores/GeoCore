@@ -18,7 +18,7 @@ sql_parameters:
     # - ts_pos_utc
 # Test dataset held out for of train/validation for evaluating performance
   test_data: 
-    - TRAWLERS_FEAT_ENG
+    - Fishing
 # Custom parameters allowing for dynamic feature/label designs
   params:
     positive_well_depth_threshold: 10

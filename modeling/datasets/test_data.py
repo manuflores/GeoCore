@@ -29,3 +29,14 @@ class IngeniousHotSprings(BaseFeatures):
         hot_springs
         where H3_BLOCKS is not null
     """
+
+
+@TEST_REGISTRY.register()
+class Fishing(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "is_fishing" 
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
