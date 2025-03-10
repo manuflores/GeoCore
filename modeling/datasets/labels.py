@@ -1,6 +1,16 @@
 from modeling.datasets.base import BaseLabels
 from modeling.datasets.build import LABEL_REGISTRY
 
+@LABEL_REGISTRY.register()
+class FishingLabels(BaseLabels):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "is_fishing"
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+
 
 @LABEL_REGISTRY.register()
 class Ingenious_Wells_TempC_Labels(BaseLabels):

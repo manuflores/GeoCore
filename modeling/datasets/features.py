@@ -7,6 +7,50 @@ logger = logging.getLogger(__name__)
 
 
 @FEATURES_REGISTRY.register()
+class Speed(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "speed" 
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+
+@FEATURES_REGISTRY.register()
+class SpeedT1(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "speed_t-1" 
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+
+
+@FEATURES_REGISTRY.register()
+class SpeedT2(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "speed_t-2" 
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+
+
+@FEATURES_REGISTRY.register()
+class SpeedT3(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "mmsi"
+    sql_code = """
+    SELECT 
+    "speed_t-3" 
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+    
+
+
+@FEATURES_REGISTRY.register()
 class Ingenious_Outline_H3Grid(BaseFeatures):
     table_name = "INGENIOUS_H3GRID_RESOLUTION_8"
     index_column = "H3_BLOCKS"

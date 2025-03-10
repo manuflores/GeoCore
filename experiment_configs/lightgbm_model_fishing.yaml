@@ -2,88 +2,20 @@ run_description: Test run on fishing dataset
 # This is where we define the feature dataset
 sql_parameters:
   features: 
-    - speed
-    - course
-    - latitude
-    - longitude
-    - speed_t-1
-    - course_t-1
-    - latitude_t-1
-    - longitude_t-1
-    - speed_t-2
-    - course_t-2
-    - latitude_t-2
-    - longitude_t-2
-    - speed_t-3
-    - course_t-3
-    - latitude_t-3
-    - longitude_t-3
-    - speed_t-4
-    - course_t-4
-    - latitude_t-4
-    - longitude_t-4
-    - speed_t-5
-    - course_t-5
-    - latitude_t-5
-    - longitude_t-5
-    - speed_t-6
-    - course_t-6
-    - latitude_t-6
-    - longitude_t-6
-    - speed_t-7
-    - course_t-7
-    - latitude_t-7
-    - longitude_t-7
-    - speed_t-8
-    - course_t-8
-    - latitude_t-8
-    - longitude_t-8
-    - speed_t-9
-    - course_t-9
-    - latitude_t-9
-    - longitude_t-9
-    - speed_t-10
-    - course_t-10
-    - latitude_t-10
-    - longitude_t-10
-    - distance
-    - hour
-    - season
-    - time_delta
-    - speed_diff
-    - acceleration
-    - jerk
-    - speed_mean
-    - speed_std
-    - speed_min
-    - speed_max
-    - course_mean
-    - course_std
-    - course_min
-    - course_max
-    - acceleration_mean
-    - acceleration_std
-    - acceleration_min
-    - acceleration_max
-    - circular_variance
-    - weekday_1
-    - weekday_2
-    - weekday_3
-    - weekday_4
-    - weekday_5
-    - weekday_6
-    - speed_cluster
+    - Speed
+    - SpeedT1
+    - SpeedT2
 # The grid table that we do a left join on defining H3_BLOCKS
   first_table: TRAWLERS_FEAT_ENG
 # Label dataset used in training/testing model
   labels: 
-    - fishing
+    - FishingLabels
 # Label Column
   label_column: LABEL
 # Meta columns used for plotting 
   meta_columns:
-    - mmsi
-    - ts_pos_utc
+    # - mmsi
+    # - ts_pos_utc
 # Test dataset held out for of train/validation for evaluating performance
   test_data: 
     - TRAWLERS_FEAT_ENG
