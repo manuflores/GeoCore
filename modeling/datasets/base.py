@@ -41,11 +41,14 @@ class BaseFeatures(ABC):
     # Default property
     sql_asis = False
     run_checks = True
-    database = os.environ.get("SNOWFLAKE_DATABASE", None)
-    schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
+    #database = os.environ.get("SNOWFLAKE_DATABASE", None)
+    #schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
     resolution = None
 
     def __init__(self):
+        self.database = os.environ.get("SNOWFLAKE_DATABASE", None)
+        self.schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
+        
         if self.database is None:
             raise ValueError("DATABASE not specified. Please set the SNOWFLAKE_DATABASE env variable")
 

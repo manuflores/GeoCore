@@ -321,7 +321,8 @@ def build_dataset(
 
     # Materialize the tables:
     for table in feature_instances + test_instances:
-        table.run_sql(cnx, cfg.params)
+        #table.run_sql(cnx, cfg.params)
+        table.run_sql(cnx, cfg["params"])
 
     # check resolutions
     # TODO: check resolution on test instances too. I am getting some None resolutions for some reason
@@ -343,7 +344,8 @@ def build_dataset(
     first_table = cfg["first_table"]
     test_tables = pd.concat([feature_props(f, cnx) for f in test_instances]) if test_instances else None
     join_sql, index_column = sql_join_script(
-        df, unsupervised, first_table, test_tables, cfg.params.test_buffer, cfg.label_column
+        #df, unsupervised, first_table, test_tables, cfg.params.test_buffer, cfg.label_column
+        df, unsupervised, first_table, test_tables, cfg["label_column"]
     )
 
     # save the sql query
