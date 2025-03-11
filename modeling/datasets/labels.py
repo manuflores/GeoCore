@@ -7,7 +7,7 @@ class FishingLabels(BaseLabels):
     index_column = "H3_BLOCKS"
     sql_code = """
     SELECT 
-    "H3_BLOCKS"
+    "H3_BLOCKS",
     "is_fishing"
     FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
     """
