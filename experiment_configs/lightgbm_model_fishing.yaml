@@ -4,7 +4,6 @@ sql_parameters:
   features: 
     - Speed
     - SpeedT1
-    - SpeedT2
 # The grid table that we do a left join on defining H3_BLOCKS
   first_table: TRAWLERS_FEAT_ENG
 # Label dataset used in training/testing model
