@@ -10,7 +10,7 @@ sql_parameters:
   labels: 
     - FishingLabels
 # Label Column
-  label_column: LABEL
+  label_column: IS_FISHING
 # Meta columns used for plotting 
   meta_columns:
     # - mmsi
