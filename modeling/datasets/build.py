@@ -321,8 +321,8 @@ def build_dataset(
 
     # Materialize the tables:
     for table in feature_instances + test_instances:
-        #table.run_sql(cnx, cfg.params)
-        table.run_sql(cnx, cfg["params"])
+        table.run_sql(cnx, cfg.params)
+        #table.run_sql(cnx, cfg["params"])
 
     # check resolutions
     # TODO: check resolution on test instances too. I am getting some None resolutions for some reason
