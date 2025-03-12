@@ -3,7 +3,7 @@ from modeling.datasets.build import LABEL_REGISTRY
 
 @LABEL_REGISTRY.register()
 class FishingLabels(BaseLabels):
-    table_name = "TRAWLERS_FEAT_ENG"
+    table_name = "LABELS"
     index_column = "H3_BLOCKS"
     sql_code = """
     SELECT 

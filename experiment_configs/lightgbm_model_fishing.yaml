@@ -5,23 +5,23 @@ sql_parameters:
     - Speed
     - SpeedT1
 # The grid table that we do a left join on defining H3_BLOCKS
-  first_table: TRAWLERS_FEAT_ENG
+  first_table: Speed
 # Label dataset used in training/testing model
   labels: 
     - FishingLabels
 # Label Column
-  label_column: IS_FISHING
+  label_column: LABELS
 # Meta columns used for plotting 
-  meta_columns:
-    # - mmsi
-    # - ts_pos_utc
+  # meta_columns:
+  #   # - mmsi
+  #   # - ts_pos_utc
 # Test dataset held out for of train/validation for evaluating performance
-  test_data: 
-    - Fishing
+  # test_data: 
+  #   - Fishing
 # Custom parameters allowing for dynamic feature/label designs
-  params:
-    positive_well_depth_threshold: 10
-    negative_well_depth_threshold: 150
+  # params:
+  #   positive_well_depth_threshold: 10
+  #   negative_well_depth_threshold: 150
 # Model specs - model type, base parameters for optimization
 model: 
   name: LGBMBinaryClassifier
@@ -36,19 +36,19 @@ model:
       search_spaces:
         max_depth : [2, 8, 'uniform']
         num_leaves : [2, 512, 'uniform']
-        min_child_samples : [15, 100, 'uniform']
-        learning_rate : [0.001, 0.2,'log-uniform']
-        n_estimators : [100, 120, 'uniform']
-        colsample_bytree : [0.2, 0.6, 'uniform']
-        subsample :  [0.2, 0.6, 'uniform']
-        subsample_freq :  [1, 7, 'uniform']
-        reg_alpha :  [0.00000001, 1.0, 'log-uniform']
-        reg_lambda :  [0.00000001, 1.0, 'log-uniform']
+        # min_child_samples : [15, 100, 'uniform']
+        # learning_rate : [0.001, 0.2,'log-uniform']
+        # n_estimators : [100, 120, 'uniform']
+        # colsample_bytree : [0.2, 0.6, 'uniform']
+        # subsample :  [0.2, 0.6, 'uniform']
+        # subsample_freq :  [1, 7, 'uniform']
+        # reg_alpha :  [0.00000001, 1.0, 'log-uniform']
+        # reg_lambda :  [0.00000001, 1.0, 'log-uniform']
 # Cross validation specs - type and specs for # of splits, buffering, cluster distances
-  cross_validator: BlockCV
-  cross_validator_parameters: 
-   nx : 4
-   ny : 2
-   n_folds: 5
-   buffer : 10
-   clustering_distance: 50
+  # cross_validator: BlockCV
+  # cross_validator_parameters: 
+  #  nx : 4
+  #  ny : 2
+  #  n_folds: 5
+  #  buffer : 10
+  #  clustering_distance: 50
