@@ -215,7 +215,7 @@ class BaseLabels(BaseFeatures):
         for match in select_matches:
             last_select_statement = match.group(0)
         selected_columns = re.search("select(.*)from", last_select_statement, re.DOTALL | re.IGNORECASE).group(1)
-        #print(selected_columns)
+        print(selected_columns)
         if (
             "H3_BLOCKS" not in selected_columns
             or "is_fishing" not in selected_columns
