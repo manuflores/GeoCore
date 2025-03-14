@@ -227,6 +227,5 @@ class BaseLabels(BaseFeatures):
             or "is_fishing" not in selected_columns
             #or "LABEL" not in selected_columns
             #or "WEIGHT" not in selected_columns
->>>>>>> e74b8a7aad9b829919123a17e0371bf28b2630a9
         ):
             raise ValueError(f"Label {self.__class__.__name__} should output H3_BLOCKS, LABEL, and WEIGHT")
