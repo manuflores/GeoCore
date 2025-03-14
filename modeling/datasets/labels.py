@@ -3,10 +3,11 @@ from modeling.datasets.build import LABEL_REGISTRY
 
 @LABEL_REGISTRY.register()
 class FishingLabels(BaseLabels):
-    table_name = "TRAWLERS_FEAT_ENG"
-    index_column = "mmsi"
+    table_name = "LABELS"
+    index_column = "H3_BLOCKS"
     sql_code = """
     SELECT 
+    "H3_BLOCKS",
     "is_fishing"
     FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
     """

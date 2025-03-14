@@ -7,29 +7,45 @@ logger = logging.getLogger(__name__)
 
 
 @FEATURES_REGISTRY.register()
+class H3Blocks(BaseFeatures):
+    table_name = "TRAWLERS_FEAT_ENG"
+    index_column = "H3_BLOCKS"
+    # This is a shapefile we convert into H3
+    sql_code = """
+    SELECT
+    H3_BLOCKS
+    FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
+    """
+
+@FEATURES_REGISTRY.register()
 class Speed(BaseFeatures):
     table_name = "TRAWLERS_FEAT_ENG"
-    index_column = "mmsi"
+    index_column = "H3_BLOCKS"
     sql_code = """
-    SELECT 
-    "speed" 
+    SELECT
+    DISTINCT
+      "H3_BLOCKS",
+      "speed"
     FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
     """
 
 @FEATURES_REGISTRY.register()
 class SpeedT1(BaseFeatures):
+    #table_name = "SPEEDT1"
     table_name = "TRAWLERS_FEAT_ENG"
-    index_column = "mmsi"
+    index_column = "H3_BLOCKS"
     sql_code = """
     SELECT 
-    "speed_t-1" 
+    DISTINCT
+      "H3_BLOCKS",
+      "speed_t-1" 
     FROM FISHING.CLASSIFIER_SCHEMA.TRAWLERS_FEAT_ENG
     """
 
 
 @FEATURES_REGISTRY.register()
 class SpeedT2(BaseFeatures):
-    table_name = "TRAWLERS_FEAT_ENG"
+    table_name = "SPEEDT2"
     index_column = "mmsi"
     sql_code = """
     SELECT 

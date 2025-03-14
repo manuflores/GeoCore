@@ -41,11 +41,14 @@ class BaseFeatures(ABC):
     # Default property
     sql_asis = False
     run_checks = True
-    database = os.environ.get("SNOWFLAKE_DATABASE", None)
-    schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
+    #database = os.environ.get("SNOWFLAKE_DATABASE", None)
+    #schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
     resolution = None
 
     def __init__(self):
+        self.database = os.environ.get("SNOWFLAKE_DATABASE", None)
+        self.schema = os.environ.get("SNOWFLAKE_SCHEMA", None)
+        
         if self.database is None:
             raise ValueError("DATABASE not specified. Please set the SNOWFLAKE_DATABASE env variable")
 
@@ -212,9 +215,18 @@ class BaseLabels(BaseFeatures):
         for match in select_matches:
             last_select_statement = match.group(0)
         selected_columns = re.search("select(.*)from", last_select_statement, re.DOTALL | re.IGNORECASE).group(1)
+<<<<<<< HEAD
         if (
             "H3_BLOCKS" not in selected_columns
             or "LABEL" not in selected_columns
             or "WEIGHT" not in selected_columns
+=======
+        print(selected_columns)
+        if (
+            "H3_BLOCKS" not in selected_columns
+            or "is_fishing" not in selected_columns
+            #or "LABEL" not in selected_columns
+            #or "WEIGHT" not in selected_columns
+>>>>>>> e74b8a7aad9b829919123a17e0371bf28b2630a9
         ):
             raise ValueError(f"Label {self.__class__.__name__} should output H3_BLOCKS, LABEL, and WEIGHT")
